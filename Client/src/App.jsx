@@ -7,6 +7,7 @@ const SignUp = lazy(() => import("./Pages/SignUp"));
 const SignIn = lazy(() => import("./Pages/SignIn"));
 const Contact = lazy(() => import("./Pages/Contact"));
 import LoadingSpinner from "./components/Random/LoadingSpinner";
+import Navbar from "./components/Landing/Navbar";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div>
+      {/* <Navbar /> */}
       <BrowserRouter>
         <Suspense fallback={<LoadingSpinner />}>
           {loading ? (

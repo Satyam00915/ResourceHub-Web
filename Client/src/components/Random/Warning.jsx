@@ -1,12 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-const Warning = ({ warning, navi, to }) => {
+const Warning = ({ warning, navi, onclickfn }) => {
   return (
-    <div className="flex gap-2 font-semibold text-lg">
-      <div className="text-gray-800">{warning}</div>
-      <div className="hover:underline text-blue-400">
-        <Link to={to}>{navi}</Link>
+    <div className="flex w-[300px] gap-1 font-semibold text-lg">
+      <div className="text-slate-400">{warning}</div>
+      <div className=" text-blue-400">
+        <button className="hover:underline" onClick={onclickfn}>
+          {navi}
+        </button>
       </div>
     </div>
   );
