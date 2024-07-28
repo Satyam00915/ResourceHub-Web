@@ -32,35 +32,34 @@ _SignUp Page_
 - Prisma
 - Zod
 
-## Project Structure
+# Project Structure
 
+````plaintext
 project-root/
 ├── backend/
-│ ├── src/
-│ │ ├── controllers/
-│ │ ├── models/
-│ │ ├── routes/
-│ │ ├── services/
-│ │ └── app.js
-│ ├── prisma/
-│ │ ├── schema.prisma
-│ │ └── migrations/
-│ ├── .env
-│ ├── package.json
-│ └── README.md
+│   ├── prisma/
+│   │   ├── migrations/
+│   │   ├── schema.prisma
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── app.js
+│   │   └── server.js
 ├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ ├── App.js
-│ │ ├── index.js
-│ ├── .env
-│ ├── package.json
-│ └── README.md
+│   ├── public/
+│   │   ├── index.html
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.js
+│   │   ├── index.js
+│   └── tailwind.config.js
 ├── .gitignore
 ├── README.md
 └── package.json
+
 
 ## Setup Instructions
 
@@ -76,4 +75,4 @@ project-root/
 git clone https://github.com/yourusername/resource-hub.git
 cd resource-hub
 
-```
+````
