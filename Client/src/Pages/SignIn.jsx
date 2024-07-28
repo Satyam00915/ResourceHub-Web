@@ -39,7 +39,6 @@ const SignIn = () => {
           <Warning
             warning={"Don't Have an Account?"}
             onclickfn={() => {
-              localStorage.setItem("From", "/signin");
               navigate("/signup");
             }}
             navi={"Sign-Up"}
