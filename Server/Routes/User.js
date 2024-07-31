@@ -6,7 +6,7 @@ const authMiddleware = require("../middleware/middleware");
 const Router = express.Router();
 
 Router.get("/", (req, res) => {
-  res.json("Need to build the Backend");
+  res.json("Need to build the Backend !!");
 });
 
 Router.post("/signup", async (req, res) => {

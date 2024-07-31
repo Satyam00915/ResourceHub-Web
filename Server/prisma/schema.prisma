@@ -14,9 +14,20 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   firstName String
-  lastName String
-  email String @unique
-  password String
+  lastName  String
+  email     String     @unique
+  password  String
+  Resource  Resource[]
+}
+
+model Resource {
+  id          Int      @id @default(autoincrement())
+  Title       String
+  Description String
+  field       String
+  createdAt   DateTime @default(now()) @db.Date
+  author      User     @relation(fields: [userId], references: [id])
+  userId      Int
 }
