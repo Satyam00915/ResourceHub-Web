@@ -13,6 +13,12 @@ const updateSchema = zod.object({
   password: zod.optional(zod.string().min(6)),
 });
 
-const resourceSchema = zod.object({});
+const resourceSchema = zod.object({
+  link: zod.string().url(),
+  Title: zod.string(),
+  Description: zod.string(),
+  field: zod.string(),
+  userId: zod.number(),
+});
 
 module.exports = { userSchema, resourceSchema, updateSchema };

@@ -11,6 +11,15 @@ interface User {
   password: string;
 }
 
+interface Resource {
+  id?: number;
+  link: string;
+  Title: string;
+  Description: string;
+  field: string;
+  userId: number;
+}
+
 export async function createUser(userObj: User) {
   const user = await prisma.user.create({
     data: userObj,
@@ -61,4 +70,72 @@ export async function checkUser(signinobj: signInParams) {
     return user.id;
   }
   return false;
+}
+
+export async function createResource(resourceObj: Resource) {
+  const resource = await prisma.resource.create({
+    data: resourceObj,
+  });
+
+  console.log(resource);
+
+  if (!resource) {
+    return false;
+  }
+  return true;
+}
+
+export async function fetchResources(userId: number) {
+  const resources = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      email: true,
+      Resource: true,
+    },
+  });
+
+  if (!resources) {
+    return false;
+  }
+  return resources;
+}
+
+type updateResourceParams = Pick<
+  Resource,
+  "Title" | "Description" | "link" | "field" | "id"
+>;
+
+type updateResourceParamsOptional = Partial<updateResourceParams>;
+export async function updateResource(updateObj: updateResourceParamsOptional) {
+  const resource = await prisma.resource.update({
+    where: {
+      id: updateObj.id,
+    },
+    data: updateObj,
+  });
+
+  console.log(resource);
+
+  if (!resource) {
+    return false;
+  }
+  return true;
+}
+
+export async function deleteResource(resourceId: number) {
+  const deleteStatus = await prisma.resource.delete({
+    where: {
+      id: resourceId,
+    },
+  });
+
+  if (!deleteResource) {
+    return false;
+  }
+  return true;
 }
