@@ -139,3 +139,38 @@ export async function deleteResource(resourceId: number) {
   }
   return true;
 }
+
+export async function fetchAllResources() {
+  const allResources = await prisma.resource.findMany();
+  return allResources;
+}
+
+export async function searchResources(searchstr: string) {
+  const searchResults = await prisma.resource.findMany({
+    where: {
+      OR: [
+        {
+          Title: {
+            contains: searchstr,
+          },
+        },
+        {
+          Description: {
+            contains: searchstr,
+          },
+        },
+        {
+          field: {
+            contains: searchstr,
+          },
+        },
+      ],
+    },
+  });
+
+  if (!searchResults) {
+    return false;
+  }
+
+  return searchResults;
+}

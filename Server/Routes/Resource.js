@@ -4,6 +4,8 @@ const {
   fetchResources,
   deleteResource,
   updateResource,
+  fetchAllResources,
+  searchResources,
 } = require("../dist/prisma");
 const authMiddleware = require("../middleware/middleware");
 const { resourceSchema } = require("../Zod/zod");
@@ -12,6 +14,13 @@ const Router = express.Router();
 Router.get("/", (req, res) => {
   res.json({
     message: "Resource Route is working fine!",
+  });
+});
+
+Router.get("/fetchall", authMiddleware, async (req, res) => {
+  const allResources = await fetchAllResources();
+  res.json({
+    Resources: allResources,
   });
 });
 
@@ -48,7 +57,22 @@ Router.post("/create", authMiddleware, async (req, res) => {
   });
 });
 
-Router.put("/update", async (req, res) => {
+Router.post("/search", authMiddleware, async (req, res) => {
+  const searchParam = req.body.searchParam;
+  const result = await searchResources(searchParam);
+  if (!result) {
+    res.json({
+      message: "No Result Found!",
+    });
+    return;
+  }
+
+  res.json({
+    Results: result,
+  });
+});
+
+Router.put("/update", authMiddleware, async (req, res) => {
   const payLoad = req.body;
   const updateStatus = await updateResource(payLoad);
   if (!updateStatus) {
