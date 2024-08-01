@@ -8,6 +8,8 @@ _Home Page_
 _Login Page_
 ![SignUp](./Client/public/image.png)
 _SignUp Page_
+![Dashboard](./Client/public/dashboard.png)
+_Dashboard Page_
 
 ## Features
 
