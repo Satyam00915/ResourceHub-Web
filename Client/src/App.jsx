@@ -22,7 +22,6 @@ function App() {
 
   return (
     <div>
-      {/* <Navbar /> */}
       <BrowserRouter>
         <Suspense fallback={<LoadingSpinner />}>
           {loading ? (

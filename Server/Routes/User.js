@@ -1,12 +1,26 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const { userSchema, updateSchema } = require("../Zod/zod");
-const { createUser, checkUser, updateUser } = require("../dist/prisma");
+const {
+  createUser,
+  checkUser,
+  updateUser,
+  fetchName,
+} = require("../dist/prisma");
 const authMiddleware = require("../middleware/middleware");
 const Router = express.Router();
 
 Router.get("/", (req, res) => {
   res.json("Need to build the Backend !!");
+});
+
+Router.get("/name", authMiddleware, async (req, res) => {
+  const userId = req.id;
+  const getName = await fetchName(userId);
+
+  res.json({
+    name: getName,
+  });
 });
 
 Router.post("/signup", async (req, res) => {
@@ -37,6 +51,7 @@ Router.post("/signup", async (req, res) => {
 
 Router.post("/signin", async (req, res) => {
   const payLoad = req.body;
+  console.log(payLoad);
   const id = await checkUser(payLoad);
   if (id) {
     const token = jwt.sign({ id: id }, "satyam");

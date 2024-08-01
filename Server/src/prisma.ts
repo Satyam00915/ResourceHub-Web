@@ -67,9 +67,14 @@ export async function checkUser(signinobj: signInParams) {
     },
   });
 
+  console.log(user);
+
   if (user?.password === signinobj.password) {
     return user.id;
+    console.log("true");
   }
+  console.log("false");
+
   return false;
 }
 

@@ -3,8 +3,31 @@ import TopBar from "../components/DashBoard/TopBar";
 import SearchBar from "../components/DashBoard/SearchBar";
 import MyContributions from "../components/DashBoard/MyContributions";
 import Resource from "../components/DashBoard/Resource";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import ResourceSkeletons from "../components/DashBoard/ResourceSkeleton";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!localStorage.getItem("authorization")) {
+      navigate("/signin");
+    } else {
+      axios
+        .get("http://localhost:3000/rh/v1/resource/fetchall", {
+          headers: {
+            Authorization: localStorage.getItem("authorization"),
+          },
+        })
+        .then((response) => {
+          setLoading(false);
+          setResources(response.data.Resources);
+        });
+    }
+  }, []);
+
   const colors = [
     "bg-yellow-700",
     "bg-green-700",
@@ -17,24 +40,7 @@ const Dashboard = () => {
     "bg-indigo-700",
     "bg-gray-700",
   ];
-  const resources = [
-    {
-      firstName: "Vanshika",
-      Resource: [
-        {
-          id: 8,
-          link: "https://www.prisma.io/docs/orm/prisma-schema/data-model/relations",
-          Title: "Prisma RelationShips Docs and More",
-          Description:
-            "Docs about sql relationships in prisma orm with examples",
-          field: "Web Development and Backend related",
-          createdAt: "2024-07-31T00:00:00.000Z",
-          userId: 23,
-        },
-      ],
-    },
-  ];
-
+  const [Resources, setResources] = useState([]);
   const [num1, setNum1] = useState(0);
 
   useEffect(function random() {
@@ -47,18 +53,24 @@ const Dashboard = () => {
       <TopBar color={colors[num1]} />
       <SearchBar />
 
-      {resources.map((resource) => {
-        return (
-          <Resource
-            key={resource.Resource.id}
-            title={resource.Resource.Title}
-            description={resource.Resource.Description}
-            username={resource.firstName}
-            link={resource.Resource.link}
-            createdAt={resource.Resource.createdAt}
-          />
-        );
-      })}
+      <div className="flex flex-wrap justify-between">
+        {loading ? (
+          <ResourceSkeletons />
+        ) : (
+          Resources.map((resource) => {
+            return (
+              <Resource
+                key={resource.id}
+                title={resource.Title}
+                description={resource.Description}
+                username={resource.username}
+                link={resource.link}
+                createdAt={resource.createdAt}
+              />
+            );
+          })
+        )}
+      </div>
     </div>
   );
 };
