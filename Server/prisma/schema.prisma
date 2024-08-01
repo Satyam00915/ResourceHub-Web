@@ -27,6 +27,7 @@ model Resource {
   link        String
   Title       String
   Description String
+  username    String
   field       String
   createdAt   DateTime @default(now()) @db.Date
   author      User     @relation(fields: [userId], references: [id])

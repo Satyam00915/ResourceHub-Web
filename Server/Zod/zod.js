@@ -17,6 +17,7 @@ const resourceSchema = zod.object({
   link: zod.string().url(),
   Title: zod.string(),
   Description: zod.string(),
+  username: zod.string(),
   field: zod.string(),
   userId: zod.number(),
 });

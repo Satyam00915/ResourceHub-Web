@@ -6,6 +6,7 @@ const {
   updateResource,
   fetchAllResources,
   searchResources,
+  fetchName,
 } = require("../dist/prisma");
 const authMiddleware = require("../middleware/middleware");
 const { resourceSchema } = require("../Zod/zod");
@@ -36,6 +37,9 @@ Router.get("/fetch", authMiddleware, async (req, res) => {
 Router.post("/create", authMiddleware, async (req, res) => {
   const payLoad = req.body;
   payLoad.userId = req.id;
+  const username = await fetchName(req.id);
+  payLoad.username = username;
+  console.log(payLoad);
   const { success } = resourceSchema.safeParse(payLoad);
   if (!success) {
     res.status(411).json({

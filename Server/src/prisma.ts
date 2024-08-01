@@ -16,6 +16,7 @@ interface Resource {
   link: string;
   Title: string;
   Description: string;
+  username: string;
   field: string;
   userId: number;
 }
@@ -70,6 +71,18 @@ export async function checkUser(signinobj: signInParams) {
     return user.id;
   }
   return false;
+}
+
+export async function fetchName(userId: number) {
+  console.log(userId);
+  const userName = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  console.log(userName);
+  return userName?.firstName;
 }
 
 export async function createResource(resourceObj: Resource) {
