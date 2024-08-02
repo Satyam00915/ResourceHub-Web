@@ -1,7 +1,7 @@
 import React from "react";
 
 const Resource = ({ title, description, username, link, createdAt }) => (
-  <div className="bg-white shadow-md rounded-lg p-6 m-4 max-w-sm transform transition-transform hover:-translate-y-1">
+  <div className="bg-white shadow-md rounded-lg p-6 m-4 w-[400px] transform transition-transform hover:-translate-y-1">
     <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
     <p className="text-gray-600 mb-4">{description}</p>
     <a

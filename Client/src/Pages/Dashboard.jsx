@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TopBar from "../components/DashBoard/TopBar";
 import SearchBar from "../components/DashBoard/SearchBar";
-import MyContributions from "../components/DashBoard/MyContributions";
 import Resource from "../components/DashBoard/Resource";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -51,11 +50,11 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col gap-8 m-5">
       <TopBar color={colors[num1]} />
-      <SearchBar />
+      <SearchBar setResources={setResources} />
 
       <div className="flex flex-wrap justify-between">
         {loading ? (
-          <ResourceSkeletons />
+          <ResourceSkeletons times={6} />
         ) : (
           Resources.map((resource) => {
             return (

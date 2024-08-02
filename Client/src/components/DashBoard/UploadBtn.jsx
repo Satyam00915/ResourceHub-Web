@@ -1,8 +1,11 @@
 import React from "react";
 
-const UploadButton = () => {
+const UploadButton = ({ onclickfn }) => {
   return (
-    <button className="flex items-center font-medium text-lg py-2 px-4 text-white bg-gradient-to-b from-purple-600 to-purple-300 border-none shadow-lg rounded-full hover:shadow-md active:shadow-sm">
+    <button
+      onClick={onclickfn}
+      className="flex items-center font-medium text-lg py-2 px-4 text-white bg-gradient-to-b from-purple-600 to-purple-300 border-none shadow-lg rounded-full hover:shadow-md active:shadow-sm"
+    >
       <svg
         viewBox="0 0 640 512"
         fill="white"

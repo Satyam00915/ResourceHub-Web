@@ -7,7 +7,7 @@ const Logout = () => {
     <button
       onClick={() => {
         localStorage.removeItem("authorization");
-        navigate("/signin");
+        navigate("/");
       }}
       className="group flex items-center justify-start w-11 h-11 bg-gray-600 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-32 hover:rounded-lg active:translate-x-1 active:translate-y-1"
     >

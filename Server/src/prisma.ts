@@ -109,10 +109,6 @@ export async function fetchResources(userId: number) {
       id: userId,
     },
     select: {
-      id: true,
-      firstName: true,
-      lastName: true,
-      email: true,
       Resource: true,
     },
   });

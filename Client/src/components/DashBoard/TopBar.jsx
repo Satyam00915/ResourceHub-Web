@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import UploadButton from "./Upload";
+import UploadButton from "./UploadBtn";
 import axios from "axios";
 import Logout from "./Logout";
+import { useNavigate } from "react-router-dom";
 
 const TopBar = ({ color }) => {
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get("http://localhost:3000/rh/v1/user/name", {
@@ -29,10 +31,14 @@ const TopBar = ({ color }) => {
       </div>
       <div className="flex items-center gap-16">
         <div>
-          <UploadButton />
+          <UploadButton
+            onclickfn={() => {
+              navigate("/dashboard/upload");
+            }}
+          />
         </div>
         <div className="text-lg font-semibold">
-          <button className="hover:underline hover:text-purple-500">
+          <button onClick={() => {navigate("/dashboard/mycontributions")}} className="hover:underline hover:text-purple-500">
             My Contributions
           </button>
         </div>

@@ -13,8 +13,7 @@ const ResourceSkeleton = () => (
   </div>
 );
 
-const ResourceSkeletons = () => {
-  const times = 6;
+const ResourceSkeletons = ({ times }) => {
   const items = Array.from({ length: times });
 
   return (

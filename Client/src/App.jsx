@@ -5,9 +5,11 @@ const LandingPage = lazy(() => import("./Pages/LandingPage"));
 const Dashboard = lazy(() => import("./Pages/Dashboard"));
 const SignUp = lazy(() => import("./Pages/SignUp"));
 const SignIn = lazy(() => import("./Pages/SignIn"));
-const Contact = lazy(() => import("./Pages/Contact"));
+const AboutDeveloper = lazy(() => import("./Pages/Contact"));
 import LoadingSpinner from "./components/Random/LoadingSpinner";
 import Navbar from "./components/Landing/Navbar";
+import Upload from "./Pages/Upload";
+import MyContributions from "./Pages/MyContributions";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,9 +32,14 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/upload" element={<Upload />} />
+              <Route
+                path="/dashboard/mycontributions"
+                element={<MyContributions />}
+              />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/signin" element={<SignIn />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route path="/contact" element={<AboutDeveloper />} />
             </Routes>
           )}
         </Suspense>
