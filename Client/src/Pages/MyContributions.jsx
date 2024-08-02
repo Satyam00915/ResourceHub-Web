@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Resource from "../components/DashBoard/Resource";
 import ResourceSkeletons from "../components/DashBoard/ResourceSkeleton";
 import axios from "axios";
 import BackButton from "../components/Random/BackButton";
+import MyResource from "../components/DashBoard/MyResource";
+import Resource from "../components/DashBoard/Resource";
 
 const MyContributions = () => {
   const [contributions, setContributions] = useState([]);
@@ -22,7 +23,7 @@ const MyContributions = () => {
   }, []);
 
   return (
-    <div className="h-screen bg-gray-100 flex flex-col justify-center items-center">
+    <div className="h-screen bg-gray-100 flex flex-col m-8 justify-center items-center">
       <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
         <div className="flex justify-between items-center mb-4">
           <BackButton />
@@ -36,8 +37,8 @@ const MyContributions = () => {
             <ResourceSkeletons times={2} />
           ) : (
             contributions.map((resource) => (
-              <Resource
-                key={resource.id}
+              <MyResource
+                del={resource.id}
                 title={resource.Title}
                 description={resource.Description}
                 username={resource.username}

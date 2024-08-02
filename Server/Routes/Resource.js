@@ -93,6 +93,7 @@ Router.put("/update", authMiddleware, async (req, res) => {
 
 Router.delete("/delete", authMiddleware, async (req, res) => {
   const resourceId = req.body.id;
+
   const deleteSt = await deleteResource(resourceId);
 
   if (!deleteSt) {

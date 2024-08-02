@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bin-top {
+  @apply transform origin-right transition duration-300;
+}
+
+.bin-bottom {
+  @apply w-4;
+}
+
+.bin-button:hover .bin-top {
+  @apply rotate-45;
+}
