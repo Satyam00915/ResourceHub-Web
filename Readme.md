@@ -4,12 +4,14 @@ Welcome to the Resource Hub project! This application is designed to allow users
 
 ![Resource Hub Home](./Client/public/main.png)
 _Home Page_
-![Login](./Client/public/image1.png)
-_Login Page_
 ![SignUp](./Client/public/image.png)
 _SignUp Page_
 ![Dashboard](./Client/public/dashboard.png)
 _Dashboard Page_
+![Upload](./Client/public/upload.png)
+_Upload Page_
+![MyContributions](./Client/public/MyContributions.png)
+_Contributions Page_
 
 ## Features
 
@@ -38,18 +40,23 @@ _Dashboard Page_
 
 ````plaintext
 project-root/
-├── backend/
+├── server/
 │   ├── prisma/
 │   │   ├── migrations/
 │   │   ├── schema.prisma
 │   ├── src/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   ├── app.js
-│   │   └── server.js
-├── frontend/
+│   │   ├── prisma.ts/
+│   ├── Routes/
+│   │   ├── index.js/
+│   │   ├── Resource.js/
+│   │   ├── User.js/
+│   ├── zod/
+│   │   ├── zod.js/
+│   ├── middleware/
+│   │   ├── middleware.js/
+│   ├── index.js/
+│   │
+├── client/
 │   ├── public/
 │   │   ├── index.html
 │   ├── src/
