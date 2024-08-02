@@ -51,7 +51,6 @@ Router.post("/signup", async (req, res) => {
 
 Router.post("/signin", async (req, res) => {
   const payLoad = req.body;
-  console.log(payLoad);
   const id = await checkUser(payLoad);
   if (id) {
     const token = jwt.sign({ id: id }, "satyam");

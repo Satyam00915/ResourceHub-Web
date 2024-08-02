@@ -65,15 +65,16 @@ export async function checkUser(signinobj: signInParams) {
     where: {
       email: signinobj.email,
     },
+    select: {
+      email: true,
+      id: true,
+      password: true,
+    },
   });
-
-  console.log(user);
 
   if (user?.password === signinobj.password) {
     return user.id;
-    console.log("true");
   }
-  console.log("false");
 
   return false;
 }
