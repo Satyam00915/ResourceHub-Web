@@ -48,7 +48,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-8 m-5">
+    <div className="flex flex-col gap-8 m-5 pt-[60px]">
       <TopBar color={colors[num1]} />
       <SearchBar setResources={setResources} />
 

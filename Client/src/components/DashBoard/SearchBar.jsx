@@ -25,7 +25,7 @@ const SearchBar = ({ setResources }) => {
     return () => clearTimeout(timer);
   }, [searchParam]);
   return (
-    <div className="flex items-center gap-4 m-5 w-[400px] relative left-2">
+    <div className="flex gap-4 m-5 w-[400px] relative left-2">
       <input
         className="w-full border border-blue-400 p-2 rounded-md"
         type="text"

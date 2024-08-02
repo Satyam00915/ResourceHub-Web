@@ -166,16 +166,25 @@ export async function searchResources(searchstr: string) {
         {
           Title: {
             contains: searchstr,
+            mode: "insensitive",
           },
         },
         {
           Description: {
             contains: searchstr,
+            mode: "insensitive",
           },
         },
         {
           field: {
             contains: searchstr,
+            mode: "insensitive",
+          },
+        },
+        {
+          username: {
+            contains: searchstr,
+            mode: "insensitive",
           },
         },
       ],
