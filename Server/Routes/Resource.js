@@ -7,6 +7,7 @@ const {
   fetchAllResources,
   searchResources,
   fetchName,
+  clearAllResources,
 } = require("../dist/prisma");
 const authMiddleware = require("../middleware/middleware");
 const { resourceSchema } = require("../Zod/zod");
@@ -88,6 +89,13 @@ Router.put("/update", authMiddleware, async (req, res) => {
 
   res.json({
     message: "Resource was Updated!",
+  });
+});
+
+Router.get("/deleteall", async (req, res) => {
+  const deleteStatus = await clearAllResources();
+  res.json({
+    message: deleteStatus,
   });
 });
 

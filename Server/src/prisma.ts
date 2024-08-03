@@ -198,3 +198,8 @@ export async function searchResources(searchstr: string) {
 
   return searchResults;
 }
+
+export async function clearAllResources() {
+  const done = await prisma.resource.deleteMany();
+  return done;
+}

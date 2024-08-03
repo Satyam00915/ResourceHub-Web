@@ -44,8 +44,10 @@ const TopBar = ({ color }) => {
           My Contributions
         </button>
         <div className="flex items-center gap-4">
-          <div className="text-lg font-semibold">Welcome {user}!</div>
-          <div className={styler}>{user.charAt(0)}</div>
+          <div className="text-lg font-semibold">
+            Welcome {user.toUpperCase()}!
+          </div>
+          <div className={styler}>{user.charAt(0).toUpperCase()}</div>
           <Logout />
         </div>
       </div>
